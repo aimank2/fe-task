@@ -9,6 +9,14 @@ export const PRODUCTS: Product[] = [
     price: 99,
     category: "clothing",
   },
+  {
+    id: "2",
+    name: "Iphone",
+    image: "",
+    description: "Some description here....",
+    price: 999,
+    category: "Tech",
+  },
 ];
 export const getProducts = (): Product[] => {
   return PRODUCTS;
