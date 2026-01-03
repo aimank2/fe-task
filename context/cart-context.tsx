@@ -16,7 +16,7 @@ const CartCntxt = createContext<any>(null);
 export function CartProvider({ children }: { children: ReactNode }) {
   const [cart, setCart] = useState<CartItem[]>([]);
   const totalItems = cart.reduce((sum, p) => sum + p.quantity, 0);
-  const totalPrice = cart.reduce((sum, p) => sum + p.quantity * p.quantity, 0);
+  const totalPrice = cart.reduce((sum, p) => sum + p.price * p.quantity, 0);
   useEffect(() => {
     const savedCart = localStorage.getItem("Cart");
     if (savedCart)
