@@ -7,7 +7,7 @@ export const PRODUCTS: Product[] = [
     image: "",
     description: "Some description here....",
     price: 99,
-    category: "clothing",
+    category: "Clothing",
   },
   {
     id: "2",
