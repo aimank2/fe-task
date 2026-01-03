@@ -12,6 +12,7 @@ const Navbar = () => {
       <Link href={"/"}>
         <Home />
       </Link>
+      <div>Nextjs EComm Mini APP</div>
       <Sheet>
         <SheetTrigger className="relative">
           <ShoppingBag />

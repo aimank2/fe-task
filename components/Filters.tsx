@@ -24,7 +24,7 @@ const Filters = ({
           <Button
             key={index}
             onClick={() => setCategory(c)}
-            className={` hover:bg-white bg-white border text-black ${
+            className={` hover:bg-gray-400 bg-white border text-black ${
               c === category && `bg-gray-300`
             }`}
           >

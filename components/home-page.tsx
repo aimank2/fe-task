@@ -2,11 +2,16 @@
 import Filters from "@/components/Filters";
 import ProductCard from "@/components/product-card";
 import { Product } from "@/types";
-import { useMemo, useState } from "react";
+import { useSearchParams, useRouter } from "next/navigation";
+import { useEffect, useMemo, useState } from "react";
 
 export default function Home({ products }: { products: Product[] }) {
-  const [category, setCategory] = useState("All");
-  const [priceRange, setPriceRange] = useState("All");
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const defaultCategory = searchParams.get("category") ?? "All";
+  const defaultPriceRange = searchParams.get("range") ?? "All";
+  const [category, setCategory] = useState(defaultCategory);
+  const [priceRange, setPriceRange] = useState(defaultPriceRange);
   const filteredProducts = useMemo(() => {
     return products.filter((p) => {
       if (category != "All" && p.category != category) return false;
@@ -23,6 +28,22 @@ export default function Home({ products }: { products: Product[] }) {
       return true;
     });
   }, [category, products, priceRange]);
+
+  useEffect(() => {
+    const params = new URLSearchParams();
+    if (category !== "All") {
+      params.set("category", category);
+    }
+    if (priceRange !== "All") {
+      params.set("range", priceRange);
+    }
+    const query = params.toString();
+    const pathname = window.location.pathname;
+    router.replace(query ? `${pathname}?${params.toString()}` : pathname, {
+      scroll: false,
+    });
+  }, [category, priceRange, router]);
+
   return (
     <>
       <Filters
