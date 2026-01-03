@@ -12,7 +12,6 @@ const Navbar = () => {
       <Link href={"/"}>
         <Home />
       </Link>
-      <div>Search Bar Input</div>
       <Sheet>
         <SheetTrigger className="relative">
           <ShoppingBag />
