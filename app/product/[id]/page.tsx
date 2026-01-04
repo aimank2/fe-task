@@ -7,6 +7,7 @@ export async function generateStaticParams() {
   return PRODUCTS.map((p) => ({ id: p.id }));
 }
 async function page({ params }: { params: Promise<{ id: string }> }) {
+  const currency = "$";
   const { id } = await params;
   const p = PRODUCTS.find((p) => p.id === id);
   return (
@@ -22,6 +23,9 @@ async function page({ params }: { params: Promise<{ id: string }> }) {
         )}
       </div>
       <p>{p?.description}</p>
+      <p>
+        Only for {p?.price} {currency}
+      </p>
     </div>
   );
 }
